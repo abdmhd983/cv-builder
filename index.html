@@ -1,2 +1,346 @@
-<script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
+ 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المنصة الاحترافية لبناء وتحميل السير الذاتية | Pro CV Builder</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --dark-color: #1f2937;
+            --light-bg: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        header.navbar {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .ad-space {
+            background-color: #f1f5f9;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            text-align: center;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 1000px;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .main-layout {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+
+        .sidebar {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--dark-color);
+        }
+
+        .template-btn {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+            background: #ffffff;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: right;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .template-btn:hover, .template-btn.active {
+            background: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+        }
+
+        .action-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .action-btn:hover {
+            background: #059669;
+        }
+
+        .cv-preview-container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .template-modern {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+        .template-modern .cv-side {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .template-modern .cv-main {
+            padding: 10px;
+        }
+
+        .template-classic {
+            display: block;
+        }
+        .template-classic header {
+            text-align: center;
+            border-bottom: 2px solid var(--dark-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .template-creative header {
+            background: var(--primary-color);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .cv-name { font-size: 2rem; font-weight: bold; margin-bottom: 5px; }
+        .cv-title { font-size: 1.1rem; color: #64748b; margin-bottom: 15px; }
+        .cv-section-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px;
+            margin: 20px 0 10px 0;
+        }
+
+        @media print {
+            header.navbar, .sidebar, .ad-space, .action-btn {
+                display: none !important;
+            }
+            .main-layout {
+                display: block;
+                margin: 0;
+                padding: 0;
+            }
+            .cv-preview-container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .template-modern {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">📄 Pro Resume Builder</div>
+        <div>منصة السير الذاتية الاحترافية العامة</div>
+    </header>
+
+    <div class="ad-space" id="ad-header">
+        <span>[مساحة إعلانية علوية - Place Adsterra Header Code Here]</span>
+    </div>
+
+    <div class="main-layout">
+        <aside class="sidebar">
+            <h3>اختر نموذج السيرة الذاتية:</h3>
+            <button class="template-btn active" onclick="switchTemplate('modern')">النموذج العصري (Modern)</button>
+            <button class="template-btn" onclick="switchTemplate('classic')">النموذج الكلاسيكي (Classic)</button>
+            <button class="template-btn" onclick="switchTemplate('creative')">النموذج الإبداعي (Creative)</button>
+
+            <button class="action-btn" onclick="window.print()">📥 تحميل / طباعة PDF</button>
+
+            <div class="ad-space" style="margin-top: 30px; min-height: 250px;" id="ad-sidebar">
+                <span>[إعلان جانبي - Sidebar Ad]</span>
+            </div>
+        </aside>
+
+        <main class="cv-preview-container">
+            <div id="cv-content" class="template-modern"></div>
+        </main>
+    </div>
+
+    <div class="ad-space" id="ad-footer">
+        <span>[مساحة إعلانية سفلية - Place Adsterra Footer Code Here]</span>
+    </div>
+
+    <script>
+        const cvData = {
+            name: "الاسم الكامل",
+            title: "المسمى الوظيفي / المهارة الرئيسية",
+            email: "your.email@example.com",
+            phone: "+000 000 000 000",
+            location: "المدينة، الدولة",
+            about: "اكتب هنا نبذة مختصرة عن خبراتك ومهاراتك وما يمكنك تقديمه للعمل.",
+            experience: [
+                { role: "اسم الوظيفة الأولى", company: "اسم الشركة", period: "2022 - الحالي", desc: "وصف مختصر للمهام والمسؤوليات التي قمت بها." },
+                { role: "اسم الوظيفة السابقة", company: "اسم الشركة", period: "2020 - 2022", desc: "وصف مختصر للإنجازات والمهام." }
+            ],
+            skills: ["مهارة 1", "مهارة 2", "مهارة 3", "مهارة 4"]
+        };
+
+        function renderModern() {
+            return `
+                <div class="cv-side">
+                    <div class="cv-name" style="font-size:1.5rem;">${cvData.name}</div>
+                    <div class="cv-title">${cvData.title}</div>
+                    <hr style="margin: 10px 0;">
+                    <p><strong>البريد:</strong> ${cvData.email}</p>
+                    <p><strong>الهاتف:</strong> ${cvData.phone}</p>
+                    <p><strong>العنوان:</strong> ${cvData.location}</p>
+                    <div class="cv-section-title">المهارات</div>
+                    <ul>${cvData.skills.map(s => `<li>${s}</li>`).join('')}</ul>
+                </div>
+                <div class="cv-main">
+                    <div class="cv-section-title">النبذة الشخصية</div>
+                    <p>${cvData.about}</p>
+                    <div class="cv-section-title">الخبرة المهنية</div>
+                    ${cvData.experience.map(e => `
+                        <div style="margin-bottom:15px;">
+                            <strong>${e.role}</strong> - <em>${e.company}</em> (${e.period})
+                            <p>${e.desc}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderClassic() {
+            return `
+                <div class="template-classic">
+                    <header>
+                        <div class="cv-name">${cvData.name}</div>
+                        <div class="cv-title">${cvData.title}</div>
+                        <p>${cvData.email} | ${cvData.phone} | ${cvData.location}</p>
+                    </header>
+                    <div class="cv-section-title">النبذة التعريفية</div>
+                    <p>${cvData.about}</p>
+                    <div class="cv-section-title">الخبرات العملية</div>
+                    ${cvData.experience.map(e => `
+                        <div style="margin-bottom:15px;">
+                            <strong>${e.role}</strong> - ${e.company} (${e.period})
+                            <p>${e.desc}</p>
+                        </div>
+                    `).join('')}
+                    <div class="cv-section-title">المهارات التقنية</div>
+                    <p>${cvData.skills.join(' • ')}</p>
+                </div>
+            `;
+        }
+
+        function renderCreative() {
+            return `
+                <div class="template-creative">
+                    <header>
+                        <div class="cv-name">${cvData.name}</div>
+                        <div class="cv-title" style="color:#e2e8f0;">${cvData.title}</div>
+                        <p>${cvData.email} | ${cvData.phone}</p>
+                    </header>
+                    <div class="cv-section-title">عني</div>
+                    <p>${cvData.about}</p>
+                    <div class="cv-section-title">مسار العمل</div>
+                    ${cvData.experience.map(e => `
+                        <div style="margin-bottom:15px; border-right: 3px solid var(--primary-color); padding-right:10px;">
+                            <strong>${e.role}</strong> - ${e.company} (${e.period})
+                            <p>${e.desc}</p>
+                        </div>
+                    `).join('')}
+                    <div class="cv-section-title">المهارات والخبرات</div>
+                    <ul>${cvData.skills.map(s => `<li>${s}</li>`).join('')}</ul>
+                </div>
+            `;
+        }
+
+        function switchTemplate(type) {
+            const container = document.getElementById('cv-content');
+            const btns = document.querySelectorAll('.template-btn');
+            btns.forEach(b => b.classList.remove('active'));
+
+            if (type === 'modern') {
+                container.className = 'template-modern';
+                container.innerHTML = renderModern();
+                btns[0].classList.add('active');
+            } else if (type === 'classic') {
+                container.className = 'template-classic';
+                container.innerHTML = renderClassic();
+                btns[1].classList.add('active');
+            } else if (type === 'creative') {
+                container.className = 'template-creative';
+                container.innerHTML = renderCreative();
+                btns[2].classList.add('active');
+            }
+        }
+
+        window.onload = () => switchTemplate('modern');
+    </script><script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
+
+</body>
+</html>
 
