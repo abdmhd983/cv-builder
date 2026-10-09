@@ -340,7 +340,138 @@
 
         window.onload = () => switchTemplate('modern');
     </script><script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
+<script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
 
 </body>
 </html>
+
+
+    <div class="ad-space" id="ad-footer">
+        <span>[مساحة إعلانية سفلية - Place Adsterra Footer Code Here]</span>
+    </div>
+
+    <script>
+        // البيانات القابلة للتعديل والمسح من المستخدم
+        let cvData = {
+            name: "الاسم الكامل هنا",
+            title: "المسمى الوظيفي / المهارة الرئيسية",
+            email: "your.email@example.com",
+            phone: "+000 000 000 000",
+            location: "المدينة، الدولة",
+            about: "اكتب هنا نبذة مختصرة عن خبراتك ومهاراتك وما يمكنك تقديمه للعمل.",
+            role1: "اسم الوظيفة الأولى",
+            company1: "اسم الشركة",
+            period1: "2022 - الحالي",
+            desc1: "وصف مختصر للمهام والمسؤوليات التي قمت بها.",
+            role2: "اسم الوظيفة السابقة",
+            company2: "اسم الشركة",
+            period2: "2020 - 2022",
+            desc2: "وصف مختصر للإنجازات والمهام.",
+            skills: "مهارة 1، مهارة 2، مهارة 3، مهارة 4"
+        };
+
+        let currentTemplate = 'modern';
+
+        // دالة لتحديث البيانات تلقائياً عند كتابة المستخدم
+        function updateData(key, value) {
+            cvData[key] = value;
+        }
+
+        function renderCV() {
+            const container = document.getElementById('cv-content');
+            container.className = `template-${currentTemplate}`;
+
+            if (currentTemplate === 'modern') {
+                container.innerHTML = `
+                    <div class="cv-side">
+                        <div class="cv-name" style="font-size:1.5rem;">
+                            <input type="text" class="editable-input" value="${cvData.name}" oninput="updateData('name', this.value)">
+                        </div>
+                        <div class="cv-title">
+                            <input type="text" class="editable-input" value="${cvData.title}" oninput="updateData('title', this.value)">
+                        </div>
+                        <hr style="margin: 10px 0; border-color: #cbd5e1;">
+يُرجى استخدام الرمز البرمجي بحذر.
+البريد: 
+الهاتف: 
+العنوان: 
+المهارات
+${cvData.skills}
+
+
+النبذة الشخصية
+${cvData.about}
+الخبرات المهنية
+
+
+
+
+
+
+${cvData.desc1}
+
+
+
+
+
+
+
+${cvData.desc2}
+
+
+; } else if (currentTemplate === 'classic') { container.innerHTML = 
+ |
+ |
+
+
+
+النبذة الشخصية
+${cvData.about}
+الخبرات المهنية
+
+
+
+
+
+
+${cvData.desc1}
+
+
+
+
+
+
+
+${cvData.desc2}
+المهارات
+${cvData.skills}
+; } else if (currentTemplate === 'creative') { container.innerHTML = 
+📧 ${cvData.email} | 📱 ${cvData.phone} | 📍 ${cvData.location}
+
+
+عني
+${cvData.about}
+مسيرتي المهنية
+
+
+
+
+
+
+${cvData.desc1}
+المهارات والقدرات
+${cvData.skills}
+`;
+}
+}
+function switchTemplate(templateName) {
+currentTemplate = templateName;
+document.querySelectorAll('.template-btn').forEach(btn => btn.classList.remove('active'));
+if(templateName === 'modern') document.getElementById('btn-modern').classList.add('active');
+if(templateName === 'classic') document.getElementById('btn-classic').classList.add('active');
+if(templateName === 'creative') document.getElementById('btn-creative').classList.add('active');
+renderCV();
+}
+// تشغيل البناء الأول للموقع تلقائياً عند الفتح
+renderCV();
 
