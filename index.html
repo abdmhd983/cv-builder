@@ -6,9 +6,10 @@
     <title>المنصة الاحترافية لبناء وتحميل السير الذاتية | Pro CV Builder</title>
     <style>
         :root {
+            --bg-color: #f1f5f9;
+            --paper-bg: #ffffff;
+            --text-color: #1f2937;
             --primary-color: #2563eb;
-            --dark-color: #1f2937;
-            --light-bg: #f8fafc;
             --border-color: #cbd5e1;
         }
 
@@ -20,26 +21,104 @@
         }
 
         body {
-            background-color: var(--light-bg);
-            color: var(--dark-color);
+            background-color: var(--bg-color);
+            color: var(--text-color);
             padding: 20px;
+            transition: all 0.3s ease;
         }
 
-        .container {
-            max-width: 800px;
+        .main-wrapper {
+            max-width: 1100px;
             margin: 0 auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            border: 2px solid var(--border-color);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 25px;
         }
 
-        h2 {
+        /* لوحة التحكم الجانبية */
+        .control-panel {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            height: fit-content;
+            border: 1px solid #e2e8f0;
+        }
+
+        .control-panel h3 {
+            margin-bottom: 15px;
+            color: #0f172a;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+
+        .style-btn {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 2px solid #e2e8f0;
+            background: #ffffff;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: right;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .style-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+
+        .style-btn.active {
+            background: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
+        }
+
+        .download-btn {
+            width: 100%;
+            padding: 14px;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.05rem;
+            cursor: pointer;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        .download-btn:hover {
+            background: #059669;
+        }
+
+        /* ورقة السيرة الذاتية */
+        .cv-paper {
+            background: var(--paper-bg);
+            color: var(--text-color);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .ad-space {
+            background-color: #f1f5f9;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
             text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 25px;
-            font-size: 1.6rem;
+            padding: 15px;
+            margin: 15px 0;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
         }
 
         .form-group {
@@ -49,144 +128,171 @@
         label {
             display: block;
             font-weight: bold;
+            font-size: 0.95rem;
             margin-bottom: 8px;
-            color: var(--dark-color);
+            color: inherit;
+            opacity: 0.9;
         }
 
-        /* حقول إدخال قياسية تجبر الهاتف على فتح لوحة المفاتيح فوراً عند اللمس */
-        .cv-input {
+        /* حقول إدخال نموذجية تجبر الهاتف على الكتابة فوراً */
+        .cv-field {
             width: 100%;
             padding: 12px;
             border: 2px solid var(--border-color);
             border-radius: 8px;
             font-size: 1rem;
-            color: #000000;
-            background-color: #ffffff;
             outline: none;
+            resize: none;
+            transition: all 0.2s ease;
             -webkit-user-select: text !important;
             user-select: text !important;
         }
 
-        .cv-input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        /* تخصيص مظهر الحقول بناءً على القالب المختار */
+        .theme-classic .cv-field {
+            color: #000000;
+            background-color: #ffffff;
+            border-color: #cbd5e1;
+        }
+        .theme-classic .cv-field:focus { border-color: #000000; }
+
+        .theme-modern .cv-field {
+            color: #0f172a;
+            background-color: #f8fafc;
+            border-color: #e2e8f0;
+        }
+        .theme-modern .cv-field:focus { border-color: #2563eb; background-color: #ffffff; }
+
+        .theme-creative .cv-field {
+            color: #ffffff;
+            background-color: #334155;
+            border-color: #475569;
+        }
+        .theme-creative .cv-field:focus { border-color: #38bdf8; }
+        .theme-creative .cv-field::placeholder { color: #94a3b8; }
+
+        /* تغييرات القوالب الكلية */
+        body.theme-classic {
+            --bg-color: #f8fafc;
+            --paper-bg: #ffffff;
+            --text-color: #1f2937;
         }
 
-        .action-btn {
-            width: 100%;
-            padding: 15px;
-            background: #10b981;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1.1rem;
-            margin-top: 10px;
+        body.theme-modern {
+            --bg-color: #e2e8f0;
+            --paper-bg: #ffffff;
+            --text-color: #0f172a;
+        }
+        body.theme-modern .cv-paper {
+            border-top: 8px solid #2563eb;
         }
 
-        .action-btn:hover {
-            background: #059669;
-        }
-
-        .ad-space {
-            background-color: #f1f5f9;
-            border: 1px dashed #cbd5e1;
-            border-radius: 8px;
-            text-align: center;
-            padding: 15px;
-            margin: 20px 0;
-            min-height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
+        body.theme-creative {
+            --bg-color: #0f172a;
+            --paper-bg: #1e293b;
+            --text-color: #f8fafc;
+            --border-color: #475569;
         }
 
         @media print {
-            .ad-space, .action-btn, label {
-                display: none !important;
-            }
-            body {
-                background: #ffffff;
-                padding: 0;
-            }
-            .container {
-                border: none;
-                box-shadow: none;
-                padding: 0;
-            }
-            .cv-input {
-                border: none !important;
-                padding: 5px 0 !important;
-                font-size: 1.2rem;
-                background: transparent !important;
-            }
+            .control-panel, .ad-space, label { display: none !important; }
+            body { padding: 0; background: #ffffff !important; }
+            .main-wrapper { display: block; }
+            .cv-paper { box-shadow: none; border: none; padding: 0; background: #ffffff !important; color: #000000 !important; }
+            .cv-field { border: none !important; padding: 4px 0 !important; font-size: 1.1rem !important; background: transparent !important; color: #000000 !important; }
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-<body>
+<body class="theme-modern">
 
-    <div class="container">
-        <h2>📄 منصة السير الذاتية الاحترافية العامة</h2>
+    <div class="main-wrapper">
+        <!-- لوحة التحكم الجانبية -->
+        <aside class="control-panel">
+            <h3>اختر مظهر السيرة الذاتية:</h3>
+            <button id="btn-modern" class="style-btn active" onclick="applyTheme('modern')">👔 القالب العصري (Modern)</button>
+            <button id="btn-classic" class="style-btn" onclick="applyTheme('classic')">📜 القالب الكلاسيكي (Classic)</button>
+            <button id="btn-creative" class="style-btn" onclick="applyTheme('creative')">🎨 القالب الإبداعي (Creative)</button>
 
-        <div class="ad-space">
-            <span>[مساحة إعلانية علوية - Place Adsterra Header Code Here]</span>
-        </div>
+            <button class="download-btn" onclick="window.print()">📥 تحميل وطباعة PDF</button>
+            
+            <div class="ad-space" style="min-height: 200px; margin-top: 20px;">
+                <span>[إعلان جانبي - Sidebar Ad]</span>
+            </div>
+        </aside>
 
-        <!-- حقول كتابة السيرة الذاتية التفاعلية -->
-        <div class="form-group">
-            <label>الاسم الكامل:</label>
-            <input type="text" class="cv-input" placeholder="اكتب اسمك الكامل هنا">
-        </div>
+        <!-- ورقة السيرة الذاتية التفاعلية الثابتة والمضمونة للكتابة -->
+        <main class="cv-paper">
+            <h2 style="text-align: center; margin-bottom: 25px;">📄 منصة بناء السيرة الذاتية الاحترافية</h2>
+            
+            <div class="ad-space">
+                <span>[مساحة إعلانية علوية - Place Adsterra Header Code Here]</span>
+            </div>
 
-        <div class="form-group">
-            <label>المسمى الوظيفي:</label>
-            <input type="text" class="cv-input" placeholder="مثال: مطور برمجيات / خريج تجارة">
-        </div>
+            <div class="form-group">
+                <label>الاسم الكامل:</label>
+                <input type="text" class="cv-field" placeholder="اكتب اسمك الكامل هنا">
+            </div>
 
-        <div class="form-group">
-            <label>البريد الإلكتروني:</label>
-            <input type="email" class="cv-input" placeholder="example@mail.com">
-        </div>
+            <div class="form-group">
+                <label>المسمى الوظيفي:</label>
+                <input type="text" class="cv-field" placeholder="مثال: مطور برمجيات / مهندس ديكور">
+            </div>
 
-        <div class="form-group">
-            <label>رقم الهاتف:</label>
-            <input type="tel" class="cv-input" placeholder="+963 ...">
-        </div>
+            <div class="form-group">
+                <label>البريد الإلكتروني:</label>
+                <input type="email" class="cv-field" placeholder="username@example.com">
+            </div>
 
-        <div class="form-group">
-            <label>المدينة والدولة:</label>
-            <input type="text" class="cv-input" placeholder="دمشق، سوريا">
-        </div>
+            <div class="form-group">
+                <label>رقم الهاتف:</label>
+                <input type="tel" class="cv-field" placeholder="+963 ...">
+            </div>
 
-        <div class="form-group">
-            <label>النبذة الشخصية (عني):</label>
-            <textarea class="cv-input" rows="4" placeholder="اكتب نبذة مختصرة عن خبراتك ومهاراتك..."></textarea>
-        </div>
+            <div class="form-group">
+                <label>المدينة والدولة:</label>
+                <input type="text" class="cv-field" placeholder="دمشق، سوريا">
+            </div>
 
-        <div class="form-group">
-            <label>التعليم والشهادات:</label>
-            <textarea class="cv-input" rows="3" placeholder="اذكر شهاداتك الجامعية وسنوات الدراسة..."></textarea>
-        </div>
+            <div class="form-group">
+                <label>النبذة الشخصية:</label>
+                <textarea class="cv-field" rows="3" placeholder="تحدث باختصار عن شغفك ومؤهلاتك..."></textarea>
+            </div>
 
-        <div class="form-group">
-            <label>الخبرات المهنية السابقة:</label>
-            <textarea class="cv-input" rows="4" placeholder="اذكر الشركات والوظائف التي عملت بها سابقاً..."></textarea>
-        </div>
+            <div class="form-group">
+                <label>التعليم والأكاديمية:</label>
+                <textarea class="cv-field" rows="3" placeholder="الشهادات الجامعية وسنوات الدراسة..."></textarea>
+            </div>
 
-        <div class="form-group">
-            <label>المهارات الرئيسية:</label>
-            <input type="text" class="cv-input" placeholder="مثال: مهارة 1، مهارة 2، مهارة 3">
-        </div>
+            <div class="form-group">
+                <label>الخبرات المهنية السابقة:</label>
+                <textarea class="cv-field" rows="4" placeholder="الوظائف والشركات التي عملت بها سابقاً..."></textarea>
+            </div>
 
-        <button class="action-btn" onclick="window.print()">📥 تحميل وطباعة السيرة الذاتية PDF</button>
+            <div class="form-group">
+                <label>المهارات الرئيسية:</label>
+                <input type="text" class="cv-field" placeholder="مثال: مهارة 1، مهارة 2، مهارة 3">
+            </div>
 
-        <div class="ad-space" style="min-height: 200px;">
-            <span>[إعلان سفلي - Place Adsterra Footer Code Here]</span>
-        </div>
+            <div class="ad-space">
+                <span>[مساحة إعلانية سفلية - Place Adsterra Footer Code Here]</span>
+            </div>
+        </main>
     </div>
-<script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
+
+    <script>
+        // تغيير القوالب عبر تبديل كلاس البودي فقط لمنع تعليق الكتابة
+        function applyTheme(themeName) {
+            document.body.className = `theme-${themeName}`;
+            document.querySelectorAll('.style-btn').forEach(btn => btn.classList.remove('active'));
+            if(themeName === 'modern') document.getElementById('btn-modern').classList.add('active');
+            if(themeName === 'classic') document.getElementById('btn-classic').classList.add('active');
+            if(themeName === 'creative') document.getElementById('btn-creative').classList.add('active');
+        }
+    </script><script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
 
 
 </body>
