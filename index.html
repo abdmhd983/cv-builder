@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المنصة الاحترافية لبناء وتحميل السير الذاتية | Pro CV Builder</title>
+    <title>المنصة الاحترافية العالمية لبناء السير الذاتية | Pro CV Builder</title>
     <style>
         :root {
             --bg-color: #f1f5f9;
@@ -89,14 +89,14 @@
             font-size: 1.05rem;
             cursor: pointer;
             margin-top: 15px;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+            box-shadow: 0 4px 12 rgba(16, 185, 129, 0.2);
         }
 
         .download-btn:hover {
             background: #059669;
         }
 
-        /* ورقة السيرة الذاتية */
+        /* ورقة السيرة الذاتية العالمية */
         .cv-paper {
             background: var(--paper-bg);
             color: var(--text-color);
@@ -134,7 +134,7 @@
             opacity: 0.9;
         }
 
-        /* حقول إدخال نموذجية تجبر الهاتف على الكتابة فوراً */
+        /* حقول إدخال تدعم جميع اللغات وعالمية بالكامل */
         .cv-field {
             width: 100%;
             padding: 12px;
@@ -148,51 +148,21 @@
             user-select: text !important;
         }
 
-        /* تخصيص مظهر الحقول بناءً على القالب المختار */
-        .theme-classic .cv-field {
-            color: #000000;
-            background-color: #ffffff;
-            border-color: #cbd5e1;
-        }
+        /* تنسيق الألوان حسب القالب المختار */
+        .theme-classic .cv-field { color: #000000; background-color: #ffffff; border-color: #cbd5e1; }
         .theme-classic .cv-field:focus { border-color: #000000; }
 
-        .theme-modern .cv-field {
-            color: #0f172a;
-            background-color: #f8fafc;
-            border-color: #e2e8f0;
-        }
+        .theme-modern .cv-field { color: #0f172a; background-color: #f8fafc; border-color: #e2e8f0; }
         .theme-modern .cv-field:focus { border-color: #2563eb; background-color: #ffffff; }
 
-        .theme-creative .cv-field {
-            color: #ffffff;
-            background-color: #334155;
-            border-color: #475569;
-        }
+        .theme-creative .cv-field { color: #ffffff; background-color: #334155; border-color: #475569; }
         .theme-creative .cv-field:focus { border-color: #38bdf8; }
         .theme-creative .cv-field::placeholder { color: #94a3b8; }
 
-        /* تغييرات القوالب الكلية */
-        body.theme-classic {
-            --bg-color: #f8fafc;
-            --paper-bg: #ffffff;
-            --text-color: #1f2937;
-        }
-
-        body.theme-modern {
-            --bg-color: #e2e8f0;
-            --paper-bg: #ffffff;
-            --text-color: #0f172a;
-        }
-        body.theme-modern .cv-paper {
-            border-top: 8px solid #2563eb;
-        }
-
-        body.theme-creative {
-            --bg-color: #0f172a;
-            --paper-bg: #1e293b;
-            --text-color: #f8fafc;
-            --border-color: #475569;
-        }
+        body.theme-classic { --bg-color: #f8fafc; --paper-bg: #ffffff; --text-color: #1f2937; }
+        body.theme-modern { --bg-color: #e2e8f0; --paper-bg: #ffffff; --text-color: #0f172a; }
+        body.theme-modern .cv-paper { border-top: 8px solid #2563eb; }
+        body.theme-creative { --bg-color: #0f172a; --paper-bg: #1e293b; --text-color: #f8fafc; --border-color: #475569; }
 
         @media print {
             .control-panel, .ad-space, label { display: none !important; }
@@ -210,7 +180,7 @@
 <body class="theme-modern">
 
     <div class="main-wrapper">
-        <!-- لوحة التحكم الجانبية -->
+        <!-- لوحة التحكم الجانبية لتبديل القوالب والتحميل -->
         <aside class="control-panel">
             <h3>اختر مظهر السيرة الذاتية:</h3>
             <button id="btn-modern" class="style-btn active" onclick="applyTheme('modern')">👔 القالب العصري (Modern)</button>
@@ -224,57 +194,63 @@
             </div>
         </aside>
 
-        <!-- ورقة السيرة الذاتية التفاعلية الثابتة والمضمونة للكتابة -->
+        <!-- ورقة السيرة الذاتية التفاعلية والشاملة -->
         <main class="cv-paper">
-            <h2 style="text-align: center; margin-bottom: 25px;">📄 منصة بناء السيرة الذاتية الاحترافية</h2>
+            <h2 style="text-align: center; margin-bottom: 25px;">📄 منصة بناء السيرة الذاتية العالمية | Pro CV Builder</h2>
             
             <div class="ad-space">
                 <span>[مساحة إعلانية علوية - Place Adsterra Header Code Here]</span>
             </div>
 
             <div class="form-group">
-                <label>الاسم الكامل:</label>
-                <input type="text" class="cv-field" placeholder="اكتب اسمك الكامل هنا">
+                <label>الاسم الكامل / Full Name:</label>
+                <input type="text" class="cv-field" placeholder="اكتب الاسم الكامل هنا / Enter full name">
             </div>
 
             <div class="form-group">
-                <label>المسمى الوظيفي:</label>
-                <input type="text" class="cv-field" placeholder="مثال: مطور برمجيات / مهندس ديكور">
+                <label>المسمى الوظيفي / Job Title:</label>
+                <input type="text" class="cv-field" placeholder="مثال: مطور برمجيات / Example: Software Engineer">
             </div>
 
             <div class="form-group">
-                <label>البريد الإلكتروني:</label>
-                <input type="email" class="cv-field" placeholder="username@example.com">
+                <label>البريد الإلكتروني / Email Address:</label>
+                <input type="email" class="cv-field" placeholder="email@example.com">
             </div>
 
             <div class="form-group">
-                <label>رقم الهاتف:</label>
-                <input type="tel" class="cv-field" placeholder="+963 ...">
+                <label>رقم الهاتف (مع رمز الدولة) / Phone Number (with Country Code):</label>
+                <input type="tel" class="cv-field" placeholder="+123456789...">
             </div>
 
             <div class="form-group">
-                <label>المدينة والدولة:</label>
-                <input type="text" class="cv-field" placeholder="دمشق، سوريا">
+                <label>المدينة والدولة / City, Country:</label>
+                <input type="text" class="cv-field" placeholder="مثال: باريس، فرنسا / Example: Paris, France">
             </div>
 
             <div class="form-group">
-                <label>النبذة الشخصية:</label>
-                <textarea class="cv-field" rows="3" placeholder="تحدث باختصار عن شغفك ومؤهلاتك..."></textarea>
+                <label>النبذة الشخصية / Summary:</label>
+                <textarea class="cv-field" rows="3" placeholder="تحدث باختصار عن شغفك ومؤهلاتك بملف التعريف الشخصي..."></textarea>
             </div>
 
             <div class="form-group">
-                <label>التعليم والأكاديمية:</label>
-                <textarea class="cv-field" rows="3" placeholder="الشهادات الجامعية وسنوات الدراسة..."></textarea>
+                <label>التعليم والأكاديمية / Education:</label>
+                <textarea class="cv-field" rows="3" placeholder="الشهادات الجامعية، التخصص، وسنوات الدراسة..."></textarea>
             </div>
 
             <div class="form-group">
-                <label>الخبرات المهنية السابقة:</label>
-                <textarea class="cv-field" rows="4" placeholder="الوظائف والشركات التي عملت بها سابقاً..."></textarea>
+                <label>الخبرات المهنية السابقة / Work Experience:</label>
+                <textarea class="cv-field" rows="4" placeholder="المسار المهني، الوظائف والشركات السابقة والمهام المنجزة..."></textarea>
             </div>
 
             <div class="form-group">
-                <label>المهارات الرئيسية:</label>
-                <input type="text" class="cv-field" placeholder="مثال: مهارة 1، مهارة 2، مهارة 3">
+                <label>المهارات الرئيسية / Skills:</label>
+                <input type="text" class="cv-field" placeholder="المهارات الفنية والشخصية الأساسية...">
+            </div>
+
+            <!-- بند اللغات الجديد المضاف بناءً على طلبك -->
+            <div class="form-group">
+                <label>اللغات / Languages:</label>
+                <input type="text" class="cv-field" placeholder="مثال: العربية (اللغة الأم)، الإنجليزية (متقدم)، الفرنسية... / Example: English, French">
             </div>
 
             <div class="ad-space">
@@ -284,16 +260,13 @@
     </div>
 
     <script>
-        // تغيير القوالب عبر تبديل كلاس البودي فقط لمنع تعليق الكتابة
         function applyTheme(themeName) {
             document.body.className = `theme-${themeName}`;
             document.querySelectorAll('.style-btn').forEach(btn => btn.classList.remove('active'));
-            if(themeName === 'modern') document.getElementById('btn-modern').classList.add('active');
-            if(themeName === 'classic') document.getElementById('btn-classic').classList.add('active');
-            if(themeName === 'creative') document.getElementById('btn-creative').classList.add('active');
-        }
-    </script><script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
-
+         if(themeName === 'modern') document.getElementById('btn-modern').classList.add('active');
+if(themeName === 'classic') document.getElementById('btn-classic').classList.add('active');
+if(themeName === 'creative') document.getElementById('btn-creative').classList.add('active');
+}<script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
 
 </body>
 </html>
