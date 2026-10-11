@@ -4,51 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة إنشاء السيرة الذاتية الاحترافية | Professional CV Builder</title>
-    <!-- Tailwind CSS لتصميم عصري وسريع -->
+    
+    <!-- كود إعلان Adsterra Social Bar (يوضع هنا مرة واحدة فقط ليعمل بنجاح على كامل الموقع) -->
+    <script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome للأيقونات -->
+    <!-- FontAwesome الأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2pdf مكتبة التصدير لـ PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         @media print {
-            body * {
-                visibility: hidden;
-            }
-            #printable-cv, #printable-cv * {
-                visibility: visible;
-            }
-            #printable-cv {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                margin: 0;
-                box-shadow: none;
-            }
-            .no-print {
-                display: none !important;
-            }
+            .no-print { display: none !important; }
         }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
 
-    <!-- شريط الإعلانات العلوي (Header Ad) -->
-    <div class="no-print bg-white border-b border-gray-200 py-2 text-center">
-        <div class="container mx-auto px-4 flex justify-center items-center min-h-[60px]">
-            <!-- كود الإعلان المدمج -->
-            <script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
-        </div>
-    </div>
-
     <!-- الهيدر الرئيسي -->
-    <header class="no-print bg-indigo-600 text-white py-4 shadow-md">
+    <header class="no-print bg-gradient-to-r from-indigo-600 to-blue-600 text-white py-4 shadow-md">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <h1 class="text-xl font-bold flex items-center gap-2">
-                <i class="fa-solid fa-file-lines"></i> صانع السيرة الذاتية الاحترافية
+                <i class="fa-solid fa-file-invoice"></i> صانع السيرة الذاتية الاحترافي
             </h1>
-            <div>
-                <button onclick="window.print()" class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition shadow cursor-pointer">
-                    <i class="fa-solid fa-download ml-1"></i> تحميل / طباعة PDF
+            <div class="flex gap-2">
+                <button onclick="downloadPDF()" class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition shadow flex items-center gap-1 cursor-pointer">
+                    <i class="fa-solid fa-download"></i> تحميل PDF
                 </button>
             </div>
         </div>
@@ -58,61 +40,73 @@
     <main class="container mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
         
         <!-- لوحة التحكم وإدخال البيانات -->
-        <div class="no-print lg:col-span-5 bg-white p-6 rounded-xl shadow-md space-y-6">
+        <div class="no-print lg:col-span-5 bg-white p-6 rounded-xl shadow-md space-y-6 max-h-[85vh] overflow-y-auto">
             <h2 class="text-lg font-bold border-b pb-3 text-indigo-600 flex items-center gap-2">
-                <i class="fa-solid fa-sliders"></i> أدوات التحكم والبيانات
+                <i class="fa-solid fa-sliders"></i> لوحة التحكم والبيانات
             </h2>
 
-            <!-- المعلومات الشخصية -->
-            <div class="space-y-4">
-                <h3 class="font-semibold text-gray-700">المعلومات الشخصية</h3>
-                <input type="text" id="input-name" placeholder="الاسم الكامل" class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()">
-                <input type="text" id="input-title" placeholder="المسمى الوظيفي (مثال: مطور ويب)" class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()">
-                <input type="email" id="input-email" placeholder="البريد الإلكتروني" class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()">
-                <input type="text" id="input-phone" placeholder="رقم الهاتف" class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()">
-                <input type="text" id="input-location" placeholder="المدينة، الدولة" class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()">
+            <!-- اختيار القالب -->
+            <div class="space-y-2">
+                <label class="font-semibold text-gray-700 text-sm">اختر القالب:</label>
+                <select id="template-select" onchange="changeTemplate()" class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none">
+                    <option value="modern">القالب العصري (Modern)</option>
+                    <option value="classic">القالب الكلاسيكي (Classic)</option>
+                    <option value="minimal">القالب المبسط (Minimal)</option>
+                </select>
+            </div>
+
+            <!-- معلومات شخصية -->
+            <div class="space-y-3">
+                <h3 class="font-semibold text-gray-700 text-sm border-t pt-3">المعلومات الشخصية</h3>
+                <input type="text" id="input-name" placeholder="الاسم الكامل" class="w-full p-2 border rounded text-sm outline-none focus:border-indigo-500" oninput="updateCV()">
+                <input type="text" id="input-title" placeholder="المسمى الوظيفي المستهدف" class="w-full p-2 border rounded text-sm outline-none focus:border-indigo-500" oninput="updateCV()">
+                <input type="email" id="input-email" placeholder="البريد الإلكتروني" class="w-full p-2 border rounded text-sm outline-none focus:border-indigo-500" oninput="updateCV()">
+                <input type="text" id="input-phone" placeholder="رقم الهاتف" class="w-full p-2 border rounded text-sm outline-none focus:border-indigo-500" oninput="updateCV()">
+                <input type="text" id="input-location" placeholder="المدينة، الدولة" class="w-full p-2 border rounded text-sm outline-none focus:border-indigo-500" oninput="updateCV()">
             </div>
 
             <!-- الملخص المهني -->
             <div class="space-y-2">
-                <h3 class="font-semibold text-gray-700">الملخص المهني</h3>
-                <textarea id="input-summary" rows="3" placeholder="نبذة مختصرة عن خبرتك ومهاراتك..." class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()"></textarea>
+                <h3 class="font-semibold text-gray-700 text-sm">الملخص المهني</h3>
+                <textarea id="input-summary" rows="3" placeholder="نبذة مختصرة عن خبرتك..." class="w-full p-2 border rounded text-sm outline-none focus:border-indigo-500" oninput="updateCV()"></textarea>
             </div>
 
-            <!-- الخبرات العملية -->
-            <div class="space-y-2">
-                <h3 class="font-semibold text-gray-700">الخبرات المهنية</h3>
-                <textarea id="input-experience" rows="3" placeholder="ذكر الشركات، المسميات، والمهام (كل خبرة في سطر)..." class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()"></textarea>
+            <!-- الخبرات المهنية الديناميكية -->
+            <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-semibold text-gray-700 text-sm">الخبرات المهنية</h3>
+                    <button onclick="addExperience()" class="bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded text-xs font-bold hover:bg-indigo-100">+ إضافة خبرة</button>
+                </div>
+                <div id="experience-inputs" class="space-y-2"></div>
             </div>
 
-            <!-- التعليم -->
-            <div class="space-y-2">
-                <h3 class="font-semibold text-gray-700">التعليم والشهادات</h3>
-                <textarea id="input-education" rows="2" placeholder="الدرجة العلمية، التخصص، والجامعة..." class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()"></textarea>
+            <!-- التعليم الديناميكي -->
+            <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-semibold text-gray-700 text-sm">التعليم</h3>
+                    <button onclick="addEducation()" class="bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded text-xs font-bold hover:bg-indigo-100">+ إضافة تعليم</button>
+                </div>
+                <div id="education-inputs" class="space-y-2"></div>
             </div>
 
             <!-- المهارات -->
             <div class="space-y-2">
-                <h3 class="font-semibold text-gray-700">المهارات (افصل بينها بفاصلة)</h3>
-                <input type="text" id="input-skills" placeholder="JavaScript, Tailwind, Git, Problem Solving" class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()">
-            </div>
-
-            <!-- إعلان جانبي داخل لوحة التحكم -->
-            <div class="pt-4 border-t flex justify-center items-center min-h-[100px]">
-                <!-- كود الإعلان المدمج -->
-                <script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
+                <h3 class="font-semibold text-gray-700 text-sm">المهارات (افصل بينها بفاصلة)</h3>
+                <input type="text" id="input-skills" placeholder="JavaScript, Tailwind, Git" class="w-full p-2 border rounded text-sm outline-none focus:border-indigo-500" oninput="updateCV()">
             </div>
         </div>
 
-        <!-- معاينة السيرة الذاتية -->
+        <!-- معاينة السيرة الذاتية (Printable Area) -->
         <div class="lg:col-span-7">
-            <div id="printable-cv" class="bg-white p-8 rounded-xl shadow-md min-h-[800px] flex flex-col justify-between border border-gray-200">
-                <div>
-                    <!-- رأس السيرة الذاتية -->
-                    <div class="border-b pb-6 mb-6 text-center sm:text-right">
+            <div id="cv-preview-container" class="bg-white p-8 rounded-xl shadow-md min-h-[900px] border border-gray-200 flex flex-col justify-between">
+                
+                <!-- محتوى السيرة الذاتية -->
+                <div id="cv-content" class="space-y-6">
+                    <!-- رأس السيرة -->
+                    <div id="cv-header" class="border-b pb-4">
                         <h2 id="cv-name" class="text-3xl font-bold text-gray-900">الاسم الكامل هنا</h2>
-                        <p id="cv-title" class="text-xl text-indigo-600 font-medium mt-1">المسمى الوظيفي المستهدف</p>
-                        <div class="flex flex-wrap justify-center sm:justify-start gap-4 text-sm text-gray-600 mt-3">
+                        <p id="cv-title" class="text-lg text-indigo-600 font-medium mt-1">المسمى الوظيفي المستهدف</p>
+                        <div class="flex flex-wrap gap-4 text-xs text-gray-600 mt-2">
                             <span id="cv-email"><i class="fa-solid fa-envelope ml-1"></i> email@example.com</span>
                             <span id="cv-phone"><i class="fa-solid fa-phone ml-1"></i> +000 000 000</span>
                             <span id="cv-location"><i class="fa-solid fa-location-dot ml-1"></i> المدينة، الدولة</span>
@@ -120,80 +114,172 @@
                     </div>
 
                     <!-- الملخص -->
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold text-gray-800 border-b-2 border-indigo-500 pb-1 mb-2">الملخص المهني</h3>
-                        <p id="cv-summary" class="text-gray-600 text-sm leading-relaxed">اكتب نبذة مختصرة عن نفسك لتظهر هنا مباشرة أثناء الكتابة...</p>
+                    <div>
+                        <h3 class="text-sm font-bold text-indigo-600 uppercase tracking-wider border-b pb-1 mb-2">الملخص المهني</h3>
+                        <p id="cv-summary" class="text-gray-700 text-sm leading-relaxed">اكتب نبذة مختصرة عن نفسك لتظهر هنا...</p>
                     </div>
 
                     <!-- الخبرات -->
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold text-gray-800 border-b-2 border-indigo-500 pb-1 mb-2">الخبرات المهنية</h3>
-                        <div id="cv-experience" class="text-gray-600 text-sm whitespace-pre-line leading-relaxed">لم يتم إدخال خبرات بعد.</div>
+                    <div>
+                        <h3 class="text-sm font-bold text-indigo-600 uppercase tracking-wider border-b pb-1 mb-2">الخبرات المهنية</h3>
+                        <div id="cv-experience-list" class="space-y-3 text-sm text-gray-700">
+                            <p class="text-gray-400 italic">لم يتم إضافة خبرات بعد.</p>
+                        </div>
                     </div>
 
                     <!-- التعليم -->
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold text-gray-800 border-b-2 border-indigo-500 pb-1 mb-2">التعليم</h3>
-                        <div id="cv-education" class="text-gray-600 text-sm whitespace-pre-line leading-relaxed">لم يتم إدخال تفاصيل التعليم بعد.</div>
+                    <div>
+                        <h3 class="text-sm font-bold text-indigo-600 uppercase tracking-wider border-b pb-1 mb-2">التعليم</h3>
+                        <div id="cv-education-list" class="space-y-3 text-sm text-gray-700">
+                            <p class="text-gray-400 italic">لم يتم إضافة تفاصيل التعليم بعد.</p>
+                        </div>
                     </div>
 
                     <!-- المهارات -->
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold text-gray-800 border-b-2 border-indigo-500 pb-1 mb-2">المهارات</h3>
-                        <div id="cv-skills" class="flex flex-wrap gap-2 mt-2">
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium">مهارة 1</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium">مهارة 2</span>
+                    <div>
+                        <h3 class="text-sm font-bold text-indigo-600 uppercase tracking-wider border-b pb-1 mb-2">المهارات</h3>
+                        <div id="cv-skills-list" class="flex flex-wrap gap-2 mt-1">
+                            <span class="bg-gray-100 text-gray-700 px-2.5 py-1 rounded text-xs">مهارة 1</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- إعلان أسفل صفحة السيرة الذاتية (يختفي في الطباعة) -->
-                <div class="no-print mt-8 pt-4 border-t border-gray-100 flex justify-center items-center min-h-[60px]">
-                    <!-- كود الإعلان المدمج -->
-                    <script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
-                </div>
             </div>
         </div>
 
     </main>
 
-    <!-- سكربت التحديث الحي للبيانات -->
+    <!-- السكربت البرمجي للتفاعل والقوالب والتصدير -->
     <script>
+        let experiences = [];
+        let educations = [];
+
+        function addExperience() {
+            experiences.push({ title: '', company: '', desc: '' });
+            renderExperienceInputs();
+            updateCV();
+        }
+
+        function removeExperience(index) {
+            experiences.splice(index, 1);
+            renderExperienceInputs();
+            updateCV();
+        }
+
+        function renderExperienceInputs() {
+            const container = document.getElementById('experience-inputs');
+            container.innerHTML = '';
+            experiences.forEach((exp, index) => {
+                container.innerHTML += `
+                    <div class="p-3 bg-gray-50 border rounded space-y-2 relative">
+                        <button onclick="removeExperience(${index})" class="absolute top-2 left-2 text-red-500 text-xs hover:underline"><i class="fa-solid fa-trash"></i> حذف</button>
+                        <input type="text" placeholder="المسمى الوظيفي" value="${exp.title}" oninput="experiences[${index}].title = this.value; updateCV();" class="w-full p-1.5 border rounded text-xs">
+                        <input type="text" placeholder="الشركة / المؤسسة" value="${exp.company}" oninput="experiences[${index}].company = this.value; updateCV();" class="w-full p-1.5 border rounded text-xs">
+                        <textarea placeholder="وصف المهام..." oninput="experiences[${index}].desc = this.value; updateCV();" class="w-full p-1.5 border rounded text-xs" rows="2">${exp.desc}</textarea>
+                    </div>
+                `;
+            });
+        }
+
+        function addEducation() {
+            educations.push({ degree: '', institution: '' });
+            renderEducationInputs();
+            updateCV();
+        }
+
+        function removeEducation(index) {
+            educations.splice(index, 1);
+            renderEducationInputs();
+            updateCV();
+        }
+
+        function renderEducationInputs() {
+            const container = document.getElementById('education-inputs');
+            container.innerHTML = '';
+            educations.forEach((edu, index) => {
+                container.innerHTML += `
+                    <div class="p-3 bg-gray-50 border rounded space-y-2 relative">
+                        <button onclick="removeEducation(${index})" class="absolute top-2 left-2 text-red-500 text-xs hover:underline"><i class="fa-solid fa-trash"></i> حذف</button>
+                        <input type="text" placeholder="الدرجة العلمية / التخصص" value="${edu.degree}" oninput="educations[${index}].degree = this.value; updateCV();" class="w-full p-1.5 border rounded text-xs">
+                        <input type="text" placeholder="الجامعة / المدرسة" value="${edu.institution}" oninput="educations[${index}].institution = this.value; updateCV();" class="w-full p-1.5 border rounded text-xs">
+                    </div>
+                `;
+            });
+        }
+
         function updateCV() {
-            const name = document.getElementById('input-name').value || 'الاسم الكامل هنا';
-            const title = document.getElementById('input-title').value || 'المسمى الوظيفي المستهدف';
-            const email = document.getElementById('input-email').value || 'email@example.com';
-            const phone = document.getElementById('input-phone').value || '+000 000 000';
-            const location = document.getElementById('input-location').value || 'المدينة، الدولة';
-            const summary = document.getElementById('input-summary').value || 'اكتب نبذة مختصرة عن نفسك لتظهر هنا مباشرة أثناء الكتابة...';
-            const experience = document.getElementById('input-experience').value || 'لم يتم إدخال خبرات بعد.';
-            const education = document.getElementById('input-education').value || 'لم يتم إدخال تفاصيل التعليم بعد.';
+            document.getElementById('cv-name').innerText = document.getElementById('input-name').value || 'الاسم الكامل هنا';
+            document.getElementById('cv-title').innerText = document.getElementById('input-title').value || 'المسمى الوظيفي المستهدف';
+            document.getElementById('cv-email').innerHTML = `<i class="fa-solid fa-envelope ml-1"></i> ${document.getElementById('input-email').value || 'email@example.com'}`;
+            document.getElementById('cv-phone').innerHTML = `<i class="fa-solid fa-phone ml-1"></i> ${document.getElementById('input-phone').value || '+000 000 000'}`;
+            document.getElementById('cv-location').innerHTML = `<i class="fa-solid fa-location-dot ml-1"></i> ${document.getElementById('input-location').value || 'المدينة، الدولة'}`;
+            document.getElementById('cv-summary').innerText = document.getElementById('input-summary').value || 'اكتب نبذة مختصرة عن نفسك لتظهر هنا...';
+
+            const expList = document.getElementById('cv-experience-list');
+            if (experiences.length > 0) {
+                expList.innerHTML = experiences.map(e => `
+                    <div>
+                        <div class="font-bold text-gray-900">${e.title || 'مسمى وظيفي'} <span class="text-indigo-600 font-normal">(${e.company || 'الشركة'})</span></div>
+                        <p class="text-gray-600 mt-0.5">${e.desc || ''}</p>
+                    </div>
+                `).join('');
+            } else {
+                expList.innerHTML = '<p class="text-gray-400 italic">لم يتم إضافة خبرات بعد.</p>';
+            }
+
+            const eduList = document.getElementById('cv-education-list');
+            if (educations.length > 0) {
+                eduList.innerHTML = educations.map(ed => `
+                    <div>
+                        <div class="font-bold text-gray-900">${ed.degree || 'التخصص'}</div>
+                        <div class="text-gray-600 text-xs">${ed.institution || 'الجامعة'}</div>
+                    </div>
+                `).join('');
+            } else {
+                eduList.innerHTML = '<p class="text-gray-400 italic">لم يتم إضافة تفاصيل التعليم بعد.</p>';
+            }
+
             const skillsInput = document.getElementById('input-skills').value;
-
-            document.getElementById('cv-name').innerText = name;
-            document.getElementById('cv-title').innerText = title;
-            document.getElementById('cv-email').innerHTML = `<i class="fa-solid fa-envelope ml-1"></i> ${email}`;
-            document.getElementById('cv-phone').innerHTML = `<i class="fa-solid fa-phone ml-1"></i> ${phone}`;
-            document.getElementById('cv-location').innerHTML = `<i class="fa-solid fa-location-dot ml-1"></i> ${location}`;
-            document.getElementById('cv-summary').innerText = summary;
-            document.getElementById('cv-experience').innerText = experience;
-            document.getElementById('cv-education').innerText = education;
-
-            const skillsContainer = document.getElementById('cv-skills');
+            const skillsContainer = document.getElementById('cv-skills-list');
             skillsContainer.innerHTML = '';
             if (skillsInput.trim() !== '') {
-                const skillsList = skillsInput.split(',');
-                skillsList.forEach(skill => {
+                skillsInput.split(',').forEach(skill => {
                     if(skill.trim() !== '') {
-                        const span = document.createElement('span');
-                        span.className = 'bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-xs font-medium';
-                        span.innerText = skill.trim();
-                        skillsContainer.appendChild(span);
+                        skillsContainer.innerHTML += `<span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded text-xs font-medium">${skill.trim()}</span>`;
                     }
                 });
             } else {
-                skillsContainer.innerHTML = '<span class="text-gray-400 text-sm">لم يتم إدخال مهارات بعد.</span>';
+                skillsContainer.innerHTML = '<span class="text-gray-400 text-xs">مهارة 1</span>';
             }
+        }
+
+        function changeTemplate() {
+            const template = document.getElementById('template-select').value;
+            const container = document.getElementById('cv-preview-container');
+            const header = document.getElementById('cv-header');
+            
+            if (template === 'classic') {
+                container.className = "bg-white p-8 rounded-xl shadow-md min-h-[900px] border-2 border-gray-800 flex flex-col justify-between font-serif";
+                header.className = "border-b-2 border-gray-800 pb-4 text-center";
+            } else if (template === 'minimal') {
+                container.className = "bg-gray-50 p-8 rounded-xl shadow-md min-h-[900px] border border-gray-300 flex flex-col justify-between";
+                header.className = "border-b pb-4 bg-white p-4 rounded shadow-sm";
+            } else {
+                container.className = "bg-white p-8 rounded-xl shadow-md min-h-[900px] border border-gray-200 flex flex-col justify-between";
+                header.className = "border-b pb-4";
+            }
+        }
+
+        function downloadPDF() {
+            const element = document.getElementById('cv-preview-container');
+            const opt = {
+                margin:       10,
+                filename:     'My-Professional-CV.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().from(element).set(opt).save();
         }
     </script>
 </body>
