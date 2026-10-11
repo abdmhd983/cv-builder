@@ -3,312 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المنصة الاحترافية العالمية لبناء السير الذاتية | Pro CV Builder</title>
-    <!-- خطوط جوجل العالمية الفخمة -->
-    <link href="https://googleapis.com" rel="stylesheet">
+    <title>منصة إنشاء السيرة الذاتية الاحترافية | Professional CV Builder</title>
+    <!-- Tailwind CSS لتصميم عصري وسريع -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #0f172a; /* كحلي ملكي عميق */
-            --secondary-color: #1e293b; /* كحلي وسيط */
-            --accent-color: #b45309; /* لمسة ذهبية برونزية كلاسيكية */
-            --bg-light: #f8fafc; /* خلفية مريحة جداً للعين */
-            --text-dark: #334155;
-            --shadow-premium: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 10px 10px -6px rgba(15, 23, 42, 0.08);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* حاوية الإعلان العلوي الخارقة - معزولة برمجياً بالكامل لمنع أي تشوه */
-        .header-ad-container {
-            width: 100%;
-            background: #ffffff;
-            padding: 15px 0;
-            text-align: center;
-            border-bottom: 1px solid #e2e8f0;
-            min-height: 90px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-        }
-
-        .main-wrapper {
-            display: flex;
-            flex: 1;
-            width: 100%;
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 30px 20px;
-            gap: 30px;
-        }
-
-        /* لوحة التحكم الجانبية الفخمة */
-        .control-sidebar {
-            width: 340px;
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: var(--shadow-premium);
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            height: fit-content;
-            position: sticky;
-            top: 30px;
-            transition: var(--transition);
-        }
-
-        .sidebar-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 12px;
-            letter-spacing: 0.5px;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 14px 24px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.2);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.3);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid #e2e8f0;
-            color: var(--text-dark);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--bg-light);
-            border-color: #cbd5e1;
-            transform: translateY(-1px);
-        }
-
-        /* مساحة الإعلان الجانبي الاحترافية والمحمية داخل لوحة التحكم */
-        .sidebar-ad-container {
-            background: #fafafa;
-            border: 1px dashed #cbd5e1;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            min-height: 250px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: var(--transition);
-        }
-
-        /* ورقة المعاينة الحية للسيرة الذاتية (A4 السحرية) */
-        .cv-preview-container {
-            flex: 1;
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: var(--shadow-premium);
-            padding: 60px 70px;
-            position: relative;
-            max-width: 850px;
-            min-height: 1150px;
-            transition: var(--transition);
-        }
-
-        /* تنسيق الهيكل الخاص بالسيرة الذاتية (عصري كلاسيكي فخم) */
-        .cv-header {
-            text-align: center;
-            border-bottom: 3px double var(--primary-color);
-            padding-bottom: 30px;
-            margin-bottom: 40px;
-            transition: var(--transition);
-        }
-
-        .cv-name {
-            font-family: 'Playfair Display', 'Cairo', serif;
-            font-size: 2.75rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            letter-spacing: 1px;
-            outline: none;
-            margin-bottom: 8px;
-            transition: var(--transition);
-        }
-
-        .cv-title {
-            font-size: 1.3rem;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            outline: none;
-        }
-
-        .cv-contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 18px;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #64748b;
-        }
-
-        .contact-item {
-            outline: none;
-        }
-
-        .cv-section {
-            margin-bottom: 35px;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', 'Cairo', serif;
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 6px;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            letter-spacing: 0.5px;
-            transition: var(--transition);
-        }
-
-        .section-title::after {
-            content: '';
-            flex: 1;
-            margin-right: 20px;
-            height: 1px;
-            background: #e2e8f0;
-        }
-
-        .cv-editable-content {
-            outline: none;
-            line-height: 1.9;
-            font-size: 1rem;
-            color: #475569;
-            white-space: pre-line;
-        }
-
-        /* تفاعل ناعم عند وقوف المستخدم على النصوص لتعديلها */
-        [contenteditable="true"] {
-            padding: 4px 8px;
-            border-radius: 6px;
-            border: 1px solid transparent;
-            transition: var(--transition);
-        }
-
-        [contenteditable="true"]:hover {
-            background-color: #f8fafc;
-            border-color: #cbd5e1;
-            cursor: pointer;
-        }
-        
-        [contenteditable="true"]:focus {
-            background-color: #ffffff;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.15);
-        }
-
-        /* 🖨️ هندسة نظام الطباعة الصارم: لإخفاء لوحة التحكم والإعلانات بالكامل واستخراج ورقة بيضاء خارقة */
         @media print {
-            body {
-                background: #ffffff !important;
+            body * {
+                visibility: hidden;
             }
-            .header-ad-container, .control-sidebar {
+            #printable-cv, #printable-cv * {
+                visibility: visible;
+            }
+            #printable-cv {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                margin: 0;
+                box-shadow: none;
+            }
+            .no-print {
                 display: none !important;
-            }
-            .main-wrapper {
-                padding: 0 !important;
-                margin: 0 !important;
-                max-width: 100% !important;
-            }
-            .cv-preview-container {
-                box-shadow: none !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                border: none !important;
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-            [contenteditable="true"] {
-                padding: 0 !important;
-                background: transparent !important;
-                border: none !important;
-                box-shadow: none !important;
             }
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800 font-sans">
 
-    <!-- حاوية الإعلان العلوي المدمج بها كود Adsterra الخاص بك -->
-    <div class="header-ad-container">
-        <script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
+    <!-- شريط الإعلانات العلوي (Header Ad) -->
+    <div class="no-print bg-white border-b border-gray-200 py-2 text-center">
+        <div class="container mx-auto px-4 flex justify-center items-center min-h-[60px]">
+            <!-- كود الإعلان المدمج -->
+            <script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
+        </div>
     </div>
 
-    <div class="main-wrapper">
+    <!-- الهيدر الرئيسي -->
+    <header class="no-print bg-indigo-600 text-white py-4 shadow-md">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold flex items-center gap-2">
+                <i class="fa-solid fa-file-lines"></i> صانع السيرة الذاتية الاحترافية
+            </h1>
+            <div>
+                <button onclick="window.print()" class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition shadow cursor-pointer">
+                    <i class="fa-solid fa-download ml-1"></i> تحميل / طباعة PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="container mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <!-- لوحة التحكم الاحترافية الجانبية -->
-        <aside class="control-sidebar">
-            <h2 class="sidebar-title">أدوات التحكم بالمنصة</h2>
-            
-            <button class="btn btn-primary" onclick="window.print()">
-                📥 تحميل وطباعة السيرة (PDF)
-            </button>
-            
-            <button class="btn btn-outline" onclick="changeTheme('modern')">
-                👔 المظهر العصري
-            </button>
-            <button class="btn btn-outline" onclick="changeTheme('classic')">
-                📜 القالب الكلاسيكي الفخم
-            </button>
-            
-            <!-- مساحة الإعلان الجانبي المدمج بها كود Adsterra الخاص بك أيضاً لمضاعفة الأرباح -->
-            <div class="sidebar-ad-container">
+        <!-- لوحة التحكم وإدخال البيانات -->
+        <div class="no-print lg:col-span-5 bg-white p-6 rounded-xl shadow-md space-y-6">
+            <h2 class="text-lg font-bold border-b pb-3 text-indigo-600 flex items-center gap-2">
+                <i class="fa-solid fa-sliders"></i> أدوات التحكم والبيانات
+            </h2>
+
+            <!-- المعلومات الشخصية -->
+            <div class="space-y-4">
+                <h3 class="font-semibold text-gray-700">المعلومات الشخصية</h3>
+                <input type="text" id="input-name" placeholder="الاسم الكامل" class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()">
+                <input type="text" id="input-title" placeholder="المسمى الوظيفي (مثال: مطور ويب)" class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()">
+                <input type="email" id="input-email" placeholder="البريد الإلكتروني" class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()">
+                <input type="text" id="input-phone" placeholder="رقم الهاتف" class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()">
+                <input type="text" id="input-location" placeholder="المدينة، الدولة" class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()">
+            </div>
+
+            <!-- الملخص المهني -->
+            <div class="space-y-2">
+                <h3 class="font-semibold text-gray-700">الملخص المهني</h3>
+                <textarea id="input-summary" rows="3" placeholder="نبذة مختصرة عن خبرتك ومهاراتك..." class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()"></textarea>
+            </div>
+
+            <!-- الخبرات العملية -->
+            <div class="space-y-2">
+                <h3 class="font-semibold text-gray-700">الخبرات المهنية</h3>
+                <textarea id="input-experience" rows="3" placeholder="ذكر الشركات، المسميات، والمهام (كل خبرة في سطر)..." class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()"></textarea>
+            </div>
+
+            <!-- التعليم -->
+            <div class="space-y-2">
+                <h3 class="font-semibold text-gray-700">التعليم والشهادات</h3>
+                <textarea id="input-education" rows="2" placeholder="الدرجة العلمية، التخصص، والجامعة..." class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()"></textarea>
+            </div>
+
+            <!-- المهارات -->
+            <div class="space-y-2">
+                <h3 class="font-semibold text-gray-700">المهارات (افصل بينها بفاصلة)</h3>
+                <input type="text" id="input-skills" placeholder="JavaScript, Tailwind, Git, Problem Solving" class="w-full p-2 border rounded focus:ring-2 focus:ring-indigo-500 outline-none" oninput="updateCV()">
+            </div>
+
+            <!-- إعلان جانبي داخل لوحة التحكم -->
+            <div class="pt-4 border-t flex justify-center items-center min-h-[100px]">
+                <!-- كود الإعلان المدمج -->
                 <script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
             </div>
-        </aside>
+        </div>
 
-        <!-- ورقة السيرة الذاتية الأنيقة (تعديل حي فوري بمجرد النقر والضغط) -->
-        <main class="cv-preview-container" id="cvPaper">
-            
-            <header class="cv-header" id="cvHeaderBlock">
-                <div class="cv-name" contenteditable="true" id="fullNameField">الاسم الكامل هنا</div>
-                <div class="cv-title" contenteditable="true" id="jobTitleField">المسمى الوظيفي المستهدف</div>
+        <!-- معاينة السيرة الذاتية -->
+        <div class="lg:col-span-7">
+            <div id="printable-cv" class="bg-white p-8 rounded-xl shadow-md min-h-[800px] flex flex-col justify-between border border-gray-200">
+                <div>
+                    <!-- رأس السيرة الذاتية -->
+                    <div class="border-b pb-6 mb-6 text-center sm:text-right">
+                        <h2 id="cv-name" class="text-3xl font-bold text-gray-900">الاسم الكامل هنا</h2>
+                        <p id="cv-title" class="text-xl text-indigo-600 font-medium mt-1">المسمى الوظيفي المستهدف</p>
+                        <div class="flex flex-wrap justify-center sm:justify-start gap-4 text-sm text-gray-600 mt-3">
+                            <span id="cv-email"><i class="fa-solid fa-envelope ml-1"></i> email@example.com</span>
+                            <span id="cv-phone"><i class="fa-solid fa-phone ml-1"></i> +000 000 000</span>
+                            <span id="cv-location"><i class="fa-solid fa-location-dot ml-1"></i> المدينة، الدولة</span>
+                        </div>
+                    </div>
+
+                    <!-- الملخص -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-bold text-gray-800 border-b-2 border-indigo-500 pb-1 mb-2">الملخص المهني</h3>
+                        <p id="cv-summary" class="text-gray-600 text-sm leading-relaxed">اكتب نبذة مختصرة عن نفسك لتظهر هنا مباشرة أثناء الكتابة...</p>
+                    </div>
+
+                    <!-- الخبرات -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-bold text-gray-800 border-b-2 border-indigo-500 pb-1 mb-2">الخبرات المهنية</h3>
+                        <div id="cv-experience" class="text-gray-600 text-sm whitespace-pre-line leading-relaxed">لم يتم إدخال خبرات بعد.</div>
+                    </div>
+
+                    <!-- التعليم -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-bold text-gray-800 border-b-2 border-indigo-500 pb-1 mb-2">التعليم</h3>
+                        <div id="cv-education" class="text-gray-600 text-sm whitespace-pre-line leading-relaxed">لم يتم إدخال تفاصيل التعليم بعد.</div>
+                    </div>
+
+                    <!-- المهارات -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-bold text-gray-800 border-b-2 border-indigo-500 pb-1 mb-2">المهارات</h3>
+                        <div id="cv-skills" class="flex flex-wrap gap-2 mt-2">
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium">مهارة 1</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium">مهارة 2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- إعلان أسفل صفحة السيرة الذاتية (يختفي في الطباعة) -->
+                <div class="no-print mt-8 pt-4 border-t border-gray-100 flex justify-center items-center min-h-[60px]">
+                    <!-- كود الإعلان المدمج -->
+                    <script data-cfasync="false" src="https://bauval.org/14/689a252086a22d065edb85981f00d4b8"></script>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- سكربت التحديث الحي للبيانات -->
+    <script>
+        function updateCV() {
+            const name = document.getElementById('input-name').value || 'الاسم الكامل هنا';
+            const title = document.getElementById('input-title').value || 'المسمى الوظيفي المستهدف';
+            const email = document.getElementById('input-email').value || 'email@example.com';
+            const phone = document.getElementById('input-phone').value || '+000 000 000';
+            const location = document.getElementById('input-location').value || 'المدينة، الدولة';
+            const summary = document.getElementById('input-summary').value || 'اكتب نبذة مختصرة عن نفسك لتظهر هنا مباشرة أثناء الكتابة...';
+            const experience = document.getElementById('input-experience').value || 'لم يتم إدخال خبرات بعد.';
+            const education = document.getElementById('input-education').value || 'لم يتم إدخال تفاصيل التعليم بعد.';
+            const skillsInput = document.getElementById('input-skills').value;
+
+            document.getElementById('cv-name').innerText = name;
+            document.getElementById('cv-title').innerText = title;
+            document.getElementById('cv-email').innerHTML = `<i class="fa-solid fa-envelope ml-1"></i> ${email}`;
+            document.getElementById('cv-phone').innerHTML = `<i class="fa-solid fa-phone ml-1"></i> ${phone}`;
+            document.getElementById('cv-location').innerHTML = `<i class="fa-solid fa-location-dot ml-1"></i> ${location}`;
+            document.getElementById('cv-summary').innerText = summary;
+            document.getElementById('cv-experience').innerText = experience;
+            document.getElementById('cv-education').innerText = education;
+
+            const skillsContainer = document.getElementById('cv-skills');
+            skillsContainer.innerHTML = '';
+            if (skillsInput.trim() !== '') {
+                const skillsList = skillsInput.split(',');
+                skillsList.forEach(skill => {
+                    if(skill.trim() !== '') {
+                        const span = document.createElement('span');
+                        span.className = 'bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-xs font-medium';
+                        span.innerText = skill.trim();
+                        skillsContainer.appendChild(span);
+                    }
+                });
+            } else {
+                skillsContainer.innerHTML = '<span class="text-gray-400 text-sm">لم يتم إدخال مهارات بعد.</span>';
+            }
+        }
+    </script>
+</body>
+</html>
